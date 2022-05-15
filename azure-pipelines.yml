@@ -66,11 +66,11 @@ steps:
     arguments: '--configuration $(buildConfiguration) --filter FullyQualifiedName!=WebCalculator.Tests.CalculatorControllerFunctionalTests'
 
 
-# ...
-# do this after your tests have run
-- script: dotnet test <test-project> --logger trx
-- task: PublishTestResults@2
-  condition: succeededOrFailed()
-  inputs:
-    testRunner: VSTest
-    testResultsFiles: '**/*.trx'
+# # ...
+# # do this after your tests have run
+# - script: dotnet test <test-project> --logger trx
+# - task: PublishTestResults@2
+#   condition: succeededOrFailed()
+#   inputs:
+#     testRunner: VSTest
+#     testResultsFiles: '**/*.trx'
