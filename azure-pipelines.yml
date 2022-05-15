@@ -17,7 +17,7 @@ steps:
     includePreviewVersions: true # Required for preview versions
 
 
-steps:
+
 - task: DotNetCoreCLI@2
   inputs:
     command: 'restore'
@@ -31,7 +31,9 @@ steps:
     projects: '**/*.csproj'
   displayName: 'dotnet build $(buildConfiguration)'
 
-steps:
+
+
+
 # ...
 # do this after other tasks such as building
 - task: DotNetCoreCLI@2
@@ -40,7 +42,7 @@ steps:
     projects: '**/*Tests/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
 
-steps:
+
 # ...
 # do this after your tests have run
 - script: dotnet test <test-project> --logger trx
@@ -52,7 +54,7 @@ steps:
 
 
 
-steps:
+
 
 - task: DotNetCoreCLI@2
   inputs:
@@ -68,7 +70,6 @@ steps:
     artifactName: 'myWebsiteName'
 
 
-steps:
 # ...
 # do this after you've built your app, near the end of your pipeline in most cases
 # for example, you do this before you deploy to an Azure web app on Windows
