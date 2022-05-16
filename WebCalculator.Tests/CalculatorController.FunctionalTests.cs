@@ -8,7 +8,7 @@ namespace WebCalculator.Tests;
 [TestFixture]
 public class CalculatorControllerFunctionalTests
 {
-    private string _url = "https://localhost:5001";
+    private string? _url = "https://localhost:5001";
     
     [OneTimeSetUp]
     public void Setup()
