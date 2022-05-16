@@ -25,7 +25,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    arguments: '--configuration $(buildConfiguration)'
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     projects: '**/*.csproj'
     # projects: |
     #   WebCalculator/WebCalculator.csproj 
@@ -36,7 +36,7 @@ steps:
 #   displayName: 'dotnet publish'
 #   inputs:
 #     command: 'publish'
-#     # projects: '**/*.csproj'
+#     projects: '**/*.csproj'
 #     # projects: |
 #     #   # WebCalculator/WebCalculator.csproj 
 #     #   WebCalculator.Tests/WebCalculator.Tests.csproj
