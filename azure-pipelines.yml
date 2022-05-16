@@ -34,7 +34,7 @@ steps:
   inputs:
     command: 'publish'
     # projects: '**/*.csproj'
-    projects: '/home/vsts/work/1/s/WebCalculator.Tests/WebCalculator.Tests.csproj'
+    projects: '**/*Tests.csproj'
     # publishWebProjects: True
     arguments: '--configuration $(BuildConfiguration)'
     zipAfterPublish: True
