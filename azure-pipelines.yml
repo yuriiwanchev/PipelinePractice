@@ -33,19 +33,14 @@ steps:
 
 
 - task: DotNetCoreCLI@2
+  displayName: 'dotnet publish'
   inputs:
-    command: publish
-    projects: './WebCalculator/WebCalculator.csproj'
-    publishWebProjects: True
+    command: 'publish'
+    projects: '**/*.csproj'
+    # publishWebProjects: True
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: publish
-    projects: './WebCalculator.Tests/WebCalculator.Tests.csproj'
-    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-    zipAfterPublish: True
 
 # - task: DotNetCoreCLI@2
 #   inputs:
@@ -60,33 +55,6 @@ steps:
     targetPath: '$(Build.ArtifactStagingDirectory)' 
     artifactName: 'myWebsiteName'
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: publish
-    projects: './WebCalculator/WebCalculator.csproj'
-    publishWebProjects: True
-    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-    zipAfterPublish: True
-
-- task: DotNetCoreCLI@2
-  inputs:
-    command: publish
-    projects: './WebCalculator.Tests/WebCalculator.Tests.csproj'
-    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-    zipAfterPublish: True
-
-# - task: DotNetCoreCLI@2
-#   inputs:
-#     command: publish ./WebCalculator/WebCalculator.csproj
-#     publishWebProjects: True
-#     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-#     zipAfterPublish: True
-
-# - task: DotNetCoreCLI@2
-#   inputs:
-#     command: publish ./WebCalculator.Tests/WebCalculator.Tests.csproj
-#     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-#     zipAfterPublish: True
 
 # ...
 # do this after other tasks such as building
