@@ -9,12 +9,12 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- task: UseDotNet@2
-  displayName: 'Install .NET Core SDK'
-  inputs:
-    version: 6.0.x
-    performMultiLevelLookup: true
-    includePreviewVersions: true # Required for preview versions
+# - task: UseDotNet@2
+#   displayName: 'Install .NET Core SDK'
+#   inputs:
+#     version: 6.0.x
+#     performMultiLevelLookup: true
+#     includePreviewVersions: true # Required for preview versions
 
 # - task: DotNetCoreCLI@2
 #   inputs:
@@ -22,28 +22,28 @@ steps:
 #     feedsToUse: 'select'
 #     vstsFeed: 'my-vsts-feed' # A series of numbers and letters
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
-    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-    projects: '**/*.csproj'
-    # projects: |
-    #   WebCalculator/WebCalculator.csproj 
-    #   WebCalculator.Tests/WebCalculator.Tests.csproj
-    zipAfterPublish: True
-  displayName: 'dotnet build $(buildConfiguration)'
-
 # - task: DotNetCoreCLI@2
-#   displayName: 'dotnet publish'
 #   inputs:
-#     command: 'publish'
+#     command: 'build'
+#     arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
 #     projects: '**/*.csproj'
 #     # projects: |
-#     #   # WebCalculator/WebCalculator.csproj 
+#     #   WebCalculator/WebCalculator.csproj 
 #     #   WebCalculator.Tests/WebCalculator.Tests.csproj
-#     # publishWebProjects: True
-#     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
 #     zipAfterPublish: True
+#   displayName: 'dotnet build $(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet publish'
+  inputs:
+    command: 'publish'
+    projects: '**/*.csproj'
+    # projects: |
+    #   # WebCalculator/WebCalculator.csproj 
+    #   WebCalculator.Tests/WebCalculator.Tests.csproj
+    # publishWebProjects: True
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: True
 
 
 # - task: DotNetCoreCLI@2
