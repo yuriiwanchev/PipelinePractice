@@ -30,6 +30,7 @@ steps:
     # projects: |
     #   WebCalculator/WebCalculator.csproj 
     #   WebCalculator.Tests/WebCalculator.Tests.csproj
+    zipAfterPublish: True
   displayName: 'dotnet build $(buildConfiguration)'
 
 # - task: DotNetCoreCLI@2
