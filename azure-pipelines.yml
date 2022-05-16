@@ -34,16 +34,15 @@ steps:
 
 - task: DotNetCoreCLI@2
   inputs:
-    command: publish
+    command: publish ./WebCalculator/WebCalculator.csproj
     publishWebProjects: True
-    arguments: './WebCalculator/WebCalculator.csproj --configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
 
 - task: DotNetCoreCLI@2
   inputs:
-    command: publish
-    publishWebProjects: True
-    arguments: './WebCalculator.Tests/WebCalculator.Tests.csproj --configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    command: publish ./WebCalculator.Tests/WebCalculator.Tests.csproj
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
 
 
@@ -56,16 +55,15 @@ steps:
 
 - task: DotNetCoreCLI@2
   inputs:
-    command: publish
+    command: publish ./WebCalculator/WebCalculator.csproj
     publishWebProjects: True
-    arguments: './WebCalculator/WebCalculator.csproj --configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
 
 - task: DotNetCoreCLI@2
   inputs:
-    command: publish
-    publishWebProjects: True
-    arguments: './WebCalculator.Tests/WebCalculator.Tests.csproj --configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    command: publish ./WebCalculator.Tests/WebCalculator.Tests.csproj
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
 
 # ...
