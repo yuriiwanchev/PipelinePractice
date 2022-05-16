@@ -22,24 +22,24 @@ steps:
 #     feedsToUse: 'select'
 #     vstsFeed: 'my-vsts-feed' # A series of numbers and letters
 
-# - task: DotNetCoreCLI@2
-#   inputs:
-#     command: 'build'
-#     arguments: '--configuration $(buildConfiguration)'
-#     # projects: '**/*.csproj'
-#     projects: |
-#       WebCalculator/WebCalculator.csproj 
-#       WebCalculator.Tests/WebCalculator.Tests.csproj
-#   displayName: 'dotnet build $(buildConfiguration)'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    arguments: '--configuration $(buildConfiguration)'
+    projects: '**/*.csproj'
+    # projects: |
+    #   WebCalculator/WebCalculator.csproj 
+    #   WebCalculator.Tests/WebCalculator.Tests.csproj
+  displayName: 'dotnet build $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet publish'
   inputs:
     command: 'publish'
     # projects: '**/*.csproj'
-    projects: |
-      # WebCalculator/WebCalculator.csproj 
-      WebCalculator.Tests/WebCalculator.Tests.csproj
+    # projects: |
+    #   # WebCalculator/WebCalculator.csproj 
+    #   WebCalculator.Tests/WebCalculator.Tests.csproj
     # publishWebProjects: True
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
