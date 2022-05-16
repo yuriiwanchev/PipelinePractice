@@ -38,7 +38,7 @@ steps:
     command: 'publish'
     # projects: '**/*.csproj'
     projects: |
-      WebCalculator/WebCalculator.csproj 
+      # WebCalculator/WebCalculator.csproj 
       WebCalculator.Tests/WebCalculator.Tests.csproj
     # publishWebProjects: True
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
