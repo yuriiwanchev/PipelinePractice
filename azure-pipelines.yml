@@ -34,16 +34,17 @@ steps:
 
 - task: DotNetCoreCLI@2
   inputs:
-    command: publish ./WebCalculator/WebCalculator.csproj
+    command: publish
+    projects: '**/*.csproj'
     publishWebProjects: True
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: publish ./WebCalculator.Tests/WebCalculator.Tests.csproj
-    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-    zipAfterPublish: True
+# - task: DotNetCoreCLI@2
+#   inputs:
+#     command: publish ./WebCalculator.Tests/WebCalculator.Tests.csproj
+#     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+#     zipAfterPublish: True
 
 
 # this code takes all the files in $(Build.ArtifactStagingDirectory) and uploads them as an artifact of your build.
@@ -52,19 +53,26 @@ steps:
     targetPath: '$(Build.ArtifactStagingDirectory)' 
     artifactName: 'myWebsiteName'
 
-
 - task: DotNetCoreCLI@2
   inputs:
-    command: publish ./WebCalculator/WebCalculator.csproj
+    command: publish
+    projects: '**/*.csproj'
     publishWebProjects: True
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: publish ./WebCalculator.Tests/WebCalculator.Tests.csproj
-    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-    zipAfterPublish: True
+# - task: DotNetCoreCLI@2
+#   inputs:
+#     command: publish ./WebCalculator/WebCalculator.csproj
+#     publishWebProjects: True
+#     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+#     zipAfterPublish: True
+
+# - task: DotNetCoreCLI@2
+#   inputs:
+#     command: publish ./WebCalculator.Tests/WebCalculator.Tests.csproj
+#     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+#     zipAfterPublish: True
 
 # ...
 # do this after other tasks such as building
