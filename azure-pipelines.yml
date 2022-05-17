@@ -16,33 +16,25 @@ steps:
     performMultiLevelLookup: true
     includePreviewVersions: true # Required for preview versions
 
-# - task: DotNetCoreCLI@2
-#   inputs:
-#     command: 'restore'
-#     feedsToUse: 'select'
-#     vstsFeed: 'my-vsts-feed' # A series of numbers and letters
-
-# - task: DotNetCoreCLI@2
-#   inputs:
-#     command: 'build'
-#     arguments: '--configuration $(buildConfiguration)'
-#     # projects: '**/*.csproj'
-#     projects: |
-#       WebCalculator/WebCalculator.csproj 
-#       WebCalculator.Tests/WebCalculator.Tests.csproj
-#   displayName: 'dotnet build $(buildConfiguration)'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    arguments: '--configuration $(buildConfiguration)'
+    projects: '**/*.csproj'
+    # projects: |
+    #   WebCalculator/WebCalculator.csproj 
+    #   WebCalculator.Tests/WebCalculator.Tests.csproj
+  displayName: 'dotnet build $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet publish'
   inputs:
     command: 'publish'
-    # projects: '**/*.csproj'
-    projects: |
-      # WebCalculator/WebCalculator.csproj 
-      WebCalculator.Tests/WebCalculator.Tests.csproj
-    # publishWebProjects: True
+    publishWebProjects: false
+    projects: '**/*.csproj'
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
+
 
 
 # - task: DotNetCoreCLI@2
