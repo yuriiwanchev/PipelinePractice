@@ -13,7 +13,7 @@ public class CalculatorControllerFunctionalTests
     [OneTimeSetUp]
     public void Setup()
     {
-        _url = Environment.GetEnvironmentVariable("TestUrl");
+        _url = Environment.GetEnvironmentVariable("TestUrl") ?? "https://localhost:5001";
     }
 
     [Test]
